@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%; /* Dark Desaturated Blue */
+    --foreground: 210 40% 98%; /* Almost White */
+
+    --card: 220 35% 15%; /* Slightly Lighter Dark Blue for cards */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 35% 12%; /* Darker for popovers */
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 65% 60%; /* Teal Accent (#46D9AA) */
+    --primary-foreground: 222 47% 11%; /* Dark for text on primary */
+
+    --secondary: 217 33% 30%; /* Muted Blue for secondary elements */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 25%; /* Muted Blue-Gray for less emphasis */
+    --muted-foreground: 210 40% 80%; /* Slightly dimmer white */
+
+    --accent: 160 65% 60%; /* Teal Accent */
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 70% 55%; /* Custom Red for destructive/loss */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 33% 25%; /* Muted Blue-Gray for borders */
+    --input: 217 33% 22%; /* Slightly darker for input backgrounds */
+    --ring: 160 65% 60%; /* Teal for focus rings */
+
+    --radius: 0.5rem;
+
+    /* Custom for LoL Insights */
+    --win-color: 140 60% 50%; /* Green for Win */
+    --loss-color: 0 70% 55%;   /* Red for Loss */
+
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--secondary));
+    --chart-3: 197 37% 24%; /* Default from shadcn dark */
+    --chart-4: 43 74% 66%; /* Default from shadcn dark */
+    --chart-5: 27 87% 67%; /* Default from shadcn dark */
+    
+    --sidebar-background: 220 35% 13%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: 217 33% 28%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 22%;
+    --sidebar-ring: hsl(var(--ring));
+
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 220 35% 15%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 35% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 160 65% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 30%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 25%;
+    --muted-foreground: 210 40% 80%;
+    --accent: 160 65% 60%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217 33% 25%;
+    --input: 217 33% 22%;
+    --ring: 160 65% 60%;
+
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--secondary));
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    --sidebar-background: 220 35% 13%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: 217 33% 28%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 22%;
+    --sidebar-ring: hsl(var(--ring));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    font-family: var(--font-geist-sans), sans-serif;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    background: 
+      radial-gradient(circle at 10% 20%, hsl(var(--primary) / 0.05), transparent 40%),
+      radial-gradient(circle at 90% 80%, hsl(var(--secondary) / 0.08), transparent 40%),
+      hsl(var(--background));
+    opacity: 0.8;
+    background-attachment: fixed;
+  }
+
+  /* Custom scrollbar for a more modern feel */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background) / 0.5);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--secondary));
+  }
+}
+
+/* Animation for match cards appearing */
+.match-card-appear {
+  animation: appear 0.5s ease-out forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
