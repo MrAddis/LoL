@@ -3,7 +3,7 @@
 const apiKeyFromEnv = process.env.RIOT_API_KEY;
 
 // Fallback API key if the environment variable is not set or is empty
-const FALLBACK_RIOT_API_KEY = "RGAPI-6697ea52-0bb0-4254-9352-d509d9ef6804";
+const FALLBACK_RIOT_API_KEY = "RGAPI-6b67c404-c01a-44f7-8174-b5906773230f";
 
 export const RIOT_API_KEY = (apiKeyFromEnv && apiKeyFromEnv.trim() !== '') ? apiKeyFromEnv : FALLBACK_RIOT_API_KEY;
 
