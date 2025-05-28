@@ -1,0 +1,11 @@
+# netlify.toml
+
+# Proxy for Google Gemini API
+# This rule redirects requests from your Netlify domain (e.g., yoursite.netlify.app/gemini-api/...)
+# to the actual Gemini API endpoint.
+# This helps bypass browser-side CORS restrictions.
+[[redirects]]
+  from = "/gemini-api/*"  # The path your frontend JavaScript will request
+  to = "https://generativelanguage.googleapis.com/v1beta/:splat" # The base URL of the Gemini API
+  status = 200            # This means it's a rewrite/proxy, not a redirect
+  force = true            # Ensures this rule is always applied
